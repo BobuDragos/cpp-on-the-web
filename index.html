@@ -10,17 +10,17 @@
     <button onclick="callCppScript()">Run C++ Script</button>
     <pre id="output"></pre>
 
-    <script>
-        function callCppScript() {
-            fetch('http://localhost:3000/run-cpp')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('output').textContent = data;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-    </script>
+<script>
+    function callCppScript() {
+        fetch('https://pure-plains-67585-01e420673ed1.herokuapp.com/run-cpp')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').textContent = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
 </body>
 </html>
