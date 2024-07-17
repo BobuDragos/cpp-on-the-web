@@ -12,7 +12,7 @@
 
 <script>
     function callCppScript() {
-        fetch('https://pure-plains-67585-01e420673ed1.herokuapp.com/run-cpp')
+        fetch('https://your-heroku-app-name.herokuapp.com/run-cpp') // Use the Heroku URL
             .then(response => response.text())
             .then(data => {
                 document.getElementById('output').textContent = data;
@@ -21,6 +21,8 @@
                 console.error('Error:', error);
             });
     }
+</script>
+
 </script>
 </body>
 </html>

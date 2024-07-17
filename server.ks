@@ -10,18 +10,18 @@ app.use(cors()); // Enable CORS for all routes
 app.get('/run-cpp', (req, res) => {
     exec(path.join(__dirname, 'script'), (error, stdout, stderr) => {
         if (error) {
-            console.error(`Error executing script: ${error}`);
-            return res.status(500).send(`Error: ${error.message}`);
+            console.error();
+            return res.status(500).send();
         }
         if (stderr) {
-            console.error(`Script stderr: ${stderr}`);
-            return res.status(500).send(`Error: ${stderr}`);
+            console.error();
+            return res.status(500).send();
         }
         res.send(stdout);
     });
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log();
 });
 
