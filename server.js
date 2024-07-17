@@ -4,14 +4,19 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Allow requests from the origin where your frontend is hosted (replace with your GitHub Pages URL)
+const corsOptions = {
+    origin: 'https://bobudragos.github.io',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/run-cpp', async (req, res) => {
     try {
         const { code } = req.body;
-        // Example Docker endpoint assuming Docker is running locally
-        const dockerEndpoint = 'http://localhost:3001/run-cpp';
+        const dockerEndpoint = 'http://localhost:3001/run-cpp'; // This should point to your local Docker container endpoint
         const response = await axios.post(dockerEndpoint, { code });
         res.send(response.data);
     } catch (error) {
